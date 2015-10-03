@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom">
-  <title>tizzybec</title>
+  <title>tb∙coding∙living</title>
   <id>http://tizzybec.github.io/</id>
-  <updated>2015-10-04T01:47:27+08:00</updated>
+  <updated>2015-10-04T02:03:22+08:00</updated>
   <subtitle>keep it simple and stupid.</subtitle>
   <link href="http://tizzybec.github.io/"></link>
   <author>
-    <name>tizzybec</name>
+    <name>tb∙coding∙living</name>
   </author>
   <entry>
     <title>简洁的静态博客构建工具 —— 纸小墨（InkPaper）</title>

@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom">
   <title>tizzybec</title>
   <id>http://tizzybec.github.io/</id>
-  <updated>2015-10-04T01:46:31+08:00</updated>
+  <updated>2015-10-04T01:47:27+08:00</updated>
   <subtitle>keep it simple and stupid.</subtitle>
   <link href="http://tizzybec.github.io/"></link>
   <author>
     <name>tizzybec</name>
   </author>
-  <entry>
-    <title>An Elegant Static Blog Generator —— InkPaper</title>
-    <updated>2015-09-23T10:00:00+08:00</updated>
-    <id>tag:,2015-09-23:/tizzybec.github.io/post/2015/03/01/ink-blog-tool-en.html</id>
-    <content type="html">InkPaper is an static blog generator developed by Golang, No dependencies, Cross platform, Easy use, Fast build, Elegant theme</content>
-    <link href="http:/tizzybec.github.io/post/2015/03/01/ink-blog-tool-en.html"></link>
-    <author>
-      <name>tizzybec</name>
-    </author>
-  </entry>
   <entry>
     <title>简洁的静态博客构建工具 —— 纸小墨（InkPaper）</title>
     <updated>2015-09-23T10:00:00+08:00</updated>

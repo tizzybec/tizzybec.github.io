@@ -40,7 +40,7 @@
                     </span>
                     <span class="tags"><a class="tag" href="/tag/C&#43;&#43;/index.html">C&#43;&#43;</a></span>
                 </section>
-                <article class="content"><p>之前看公司有人收集类元信息用的方法很巧妙,所以早就想写一篇关于动态初始化的博客,一则是想分享,二则是作为个人摘记.</p>
+                <article class="content"><p>之前看公司有人收集类元信息用的方法很巧妙，所以早就想写一篇关于动态初始化的博客，一则是想分享，二则是作为个人摘记。</p>
 
 <p>在c++标准的initialization of non-local variable章节有如下描述</p>
 
@@ -71,8 +71,11 @@ EXE,WinMainCRTStartup or wWinMainCRTStartup for a Windows EXE, or _DllMainCRTSta
 Unless one of the above functions is called on startup, the C Runtime will not be initialized.</p>
 </blockquote>
 
-<p>比如我们使用vc100编译器,默认的入口函数wmainCRTStartup,当然项目配置或者链接器提供/ENTRY参数进行入口函数的指定,对于DLL又有所不同,执行的_DLLMainCRTStartup函数,一般来说这些函数做了如下事情
-&gt;including calling _CRT_INIT, which initializes the C/C++ run-time library and invokes C++ constructors on static, non-local variables</p>
+<p>比如我们使用vc100编译器，默认的入口函数wmainCRTStartup，当然项目配置或者链接器提供/ENTRY参数进行入口函数的指定，对于DLL又有所不同，执行的_DLLMainCRTStartup函数，一般来说这些函数做了如下事情</p>
+
+<blockquote>
+<p>including calling _CRT_INIT, which initializes the C/C++ run-time library and invokes C++ constructors on static, non-local variables</p>
+</blockquote>
 
 <p>所以对于VC系列编译器CRT提供了动态初始化的实现,在CRT Initialization文档部分,我们看到如下描述</p>
 
@@ -96,16 +99,18 @@ int main()
 }  
 </code></pre>
 
-<p>通过dumpbin /all your.obj可以看到所有放置在.CRT$XCA 和 .CRT$XCZ之间的.CRT$XCU内变量都会进行全局初始化.我们暂时不看dumpbin出来的具体内容,稍后我们会结合自己写的例子进行说明.</p>
+<p>通过dumpbin /all your.obj可以看到所有放置在.CRT$XCA 和 .CRT$XCZ之间的.CRT$XCU内变量都会进行全局初始化。我们暂时不看dumpbin出来的具体内容，稍后我们会结合自己写的例子进行说明。</p>
 
 <p>回到文章开头,为什么要用动态初始化来进行元数据的收集?我的理解至少有两点便利:</p>
 
 <ol>
-<li><p>在main函数或者在DLL全局函数执行之前所有类的元信息已经收集完毕,无论是对类进行序列化还是反序列化都有足够的信息</p></li>
+<li><p>在main函数或者在DLL全局函数执行之前所有类的元信息已经收集完毕，无论是对类进行序列化还是反序列化都有足够的信息</p></li>
 
-<li><p>通过一些trick我们可以不定义全部变量来进行元信息的手机,这样避免了声明过多的全局变量,同时整个注册部分完全隐藏了起来,通过宏的包装,完全可以简化元信息收集
-下面我们来看一看具体的实现.首先申明一个不完全类型的元信息收集器:</p></li>
+<li><p>通过一些trick我们可以不定义全部变量来进行元信息的收集，这样避免了声明过多的全局变量，同时整个注册部分完全隐藏了起来，通过宏的包装,完全可以简化元信息收集
+下面我们来看一看具体的实现。</p></li>
 </ol>
+
+<p>首先申明一个不完全类型的元信息收集器：</p>
 
 <pre><code>template&lt;class Ty&gt;  
 struct MetaDataCollector;  
@@ -127,7 +132,7 @@ template &lt;typename T&gt;
 __declspec(dllexport) T Activator&lt;T&gt;::_Intance = Activator&lt;T&gt;::GetInstance(); 
 </code></pre>
 
-<p>最后定义一个进行类数据收集的宏,我们假设每个要注册的类都提供一个RegType函数进行信息收集</p>
+<p>最后定义一个进行类数据收集的宏，我们假设每个要注册的类都提供一个RegType函数进行信息收集</p>
 
 <pre><code>#define REGCLASS(cls) \  
 template&lt;&gt;\  
@@ -143,7 +148,7 @@ struct MetaDataCollector&lt;cls&gt;{\
 }  
 </code></pre>
 
-<p>把这几段代码编成动态库给其它程序调用,之后我们新建一个项目,新建一个类C,并且对类进行元信息收集</p>
+<p>把这几段代码编成动态库给其它程序调用，之后我们新建一个项目，新建一个类C，并且对类进行元信息收集</p>
 
 <pre><code>class __declspec(dllexport) C{  
 public:  
@@ -155,7 +160,7 @@ public:
 REGCLASS(C);  
 </code></pre>
 
-<p>通过调试,我们顺利在GetInstance函数内得到断点,调用堆栈中显示了Dynamic initializtion字样</p>
+<p>通过调试，我们顺利在GetInstance函数内得到断点，调用堆栈中显示了Dynamic initializtion字样</p>
 
 <pre><code>&gt;    MyMain.exe!`dynamic initializer for 'Activator&lt;MetaDataCollector&lt;C&gt; &gt;::_Intance''()  行 28 + 0x28 字节 C++  
 </code></pre>
@@ -167,10 +172,10 @@ REGCLASS(C);
 00000000  DIR32                      00000000        47  ??__E?_Intance@?$Activator@U?$MetaDataCollector@VC@@@@@@2U?$MetaDataCollector@VC@@@@A@@YAXXZ (void __cdecl `dynamic initializer for 'public: static struct MetaDataCollector&lt;class C&gt; Activator&lt;struct MetaDataCollector&lt;class C&gt; &gt;::_Intance''(void))  
 </code></pre>
 
-<p>可以看到 <strong>_Intance</strong> 进行了动态初始化,通过定义宏可以看到这种实现还是比较优雅的,元信息类的初始化放在了单例类中,但是需要注意的初始化_Instance的过程中调用的GetInstance函数必须使用_Instance静态成员变量,否则模板类是无法激活的.</p>
+<p>可以看到 <strong>_Intance</strong> 进行了动态初始化，通过定义宏可以看到这种实现还是比较优雅的，元信息类的初始化放在了单例类中,但是需要注意的初始化_Instance的过程中调用的GetInstance函数必须使用_Instance静态成员变量，否则模板类是无法激活的。</p>
 
-<p>综合以上实现,我们用到了不完整类型定义元信息收集器,通过宏来定义具体的元信息收集器进行模板的激活,模板激活的过程中发现有静态成员变量需要初始化,
-则首先调用GetInstance函数,如果GetInstance函数内没有任何影响静态变量值得代码,则初始化还是无法激活,所以也有另外一种写法,原理是一样的.</p>
+<p>综合以上实现,我们用到了不完整类型定义元信息收集器，通过宏来定义具体的元信息收集器进行模板的激活，模板激活的过程中发现有静态成员变量需要初始化，
+则首先调用GetInstance函数,如果GetInstance函数内没有任何影响静态变量值得代码，则初始化还是无法激活，所以也有另外一种写法，原理是一样的。</p>
 
 <pre><code>class __declspec(dllexport) Activator {  
 public:  

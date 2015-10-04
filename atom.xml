@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom">
   <title>生活∙编码-日记</title>
   <id>http://www.tizzybec.com/</id>
-  <updated>2015-10-04T21:54:25+08:00</updated>
+  <updated>2015-10-04T21:59:09+08:00</updated>
   <subtitle>keep it simple and stupid.</subtitle>
   <link href="http://www.tizzybec.com/"></link>
   <author>
@@ -11,7 +11,7 @@
     <title>C++动态初始化（Dynamic Initializer）</title>
     <updated>2015-10-04T21:43:00+08:00</updated>
     <id>tag:,2015-10-04:/www.tizzybec.com/post/2015/10/04/cpp-dynamic-initializer.html</id>
-    <content type="html"> &#xA;&#xA;之前看公司有人收集类元信息用的方法很巧妙,所以早就想写一篇关于动态初始化的博客,一则是想分享,二则是作为个人摘记.&#xA;&#xA;</content>
+    <content type="html"> &#xA;&#xA;之前看公司有人收集类元信息用的方法很巧妙，所以早就想写一篇关于动态初始化的博客，一则是想分享，二则是作为个人摘记。&#xA;&#xA;</content>
     <link href="http:/www.tizzybec.com/post/2015/10/04/cpp-dynamic-initializer.html"></link>
     <author>
       <name>tizzybec</name>

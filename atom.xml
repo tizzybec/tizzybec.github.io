@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom">
-  <title>生活∙编码日记</title>
-  <id>http://tizzybec.github.io/</id>
-  <updated>2015-10-04T12:52:42+08:00</updated>
+  <title>生活∙编码-日记</title>
+  <id>http://www.tizzybec.com/</id>
+  <updated>2015-10-04T13:43:04+08:00</updated>
   <subtitle>keep it simple and stupid.</subtitle>
-  <link href="http://tizzybec.github.io/"></link>
+  <link href="http://www.tizzybec.com/"></link>
   <author>
-    <name>生活∙编码日记</name>
+    <name>生活∙编码-日记</name>
   </author>
   <entry>
     <title>使用InkPaper构建个人博客</title>
     <updated>2015-10-04T11:33:00+08:00</updated>
-    <id>tag:,2015-10-04:/tizzybec.github.io/post/2015/10/04/build-blog-with-ink.html</id>
+    <id>tag:,2015-10-04:/www.tizzybec.com/post/2015/10/04/build-blog-with-ink.html</id>
     <content type="html">ink是一款简洁的静态博客构建工具，结合github pages能够快速搭建个人博客</content>
-    <link href="http:/tizzybec.github.io/post/2015/10/04/build-blog-with-ink.html"></link>
+    <link href="http:/www.tizzybec.com/post/2015/10/04/build-blog-with-ink.html"></link>
     <author>
       <name>tizzybec</name>
     </author>

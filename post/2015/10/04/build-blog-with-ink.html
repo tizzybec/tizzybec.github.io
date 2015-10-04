@@ -5,10 +5,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=1">
         <meta name="keywords" content="工具,">
-        <meta name="description" content="使用InkPaper构建个人博客">
+        <meta name="description" content="使用InkPaper搭建个人博客">
         <link rel="stylesheet" href="/css/index.css">
         <link rel="stylesheet" href="/css/github.css">
-        <title>使用InkPaper构建个人博客</title>
+        <title>使用InkPaper搭建个人博客</title>
     </head>
     <body>
         <article class="container">
@@ -21,7 +21,7 @@
 </ul>
 
             <article class="main article">
-                <h1 class="title">使用InkPaper构建个人博客</h1>
+                <h1 class="title">使用InkPaper搭建个人博客</h1>
                 <section class="info">
                     <span class="avatar" style="background-image: url(/images/tizzybec.jpg);"></span>
                     <a class="name" href="/about.me.html">tizzybec</a>
@@ -31,7 +31,7 @@
                     </span>
                     <span class="tags"><a class="tag" href="/tag/%e5%b7%a5%e5%85%b7/index.html">工具</a></span>
                 </section>
-                <article class="content"><h2>建博缘由</h2>
+                <article class="content"><h2>建站缘由</h2>
 
 <p>由于在一家涉密机构工作，工作两年一直没有将技术学习过程和成果以博客形式分享出来（一直零散地写在有道笔记里，不成体系）。恰巧最近外甥在学习<a href="https://facebook.github.io/react-native/">React Native</a>,有些不明白的地方在不断请教我，借此机会我也搭建了react-native相关环境，对react/react-native有些比较基本的理解，由于使用过程中难免会有问题，所以想以此博客记录疏漏，同时激励自己将写博客这件事情坚持下去。</p>
 
@@ -124,7 +124,7 @@ build:
 
 <h3>绑定自定义域名</h3>
 
-<p>去*万网/dnspod/花生壳*都可以申请到域名，付费后到控制台新建一条域名解析记录</p>
+<p>去 <em>万网/dnspod/花生壳</em> 都可以申请到域名，付费后到控制台新建一条域名解析记录</p>
 
 <pre><code>子域名 记录类型   记录值                TTL
 www   CNAME     tizzybec.github.io  600
@@ -133,6 +133,13 @@ www   CNAME     tizzybec.github.io  600
 <p>在<code>tizzybec.github.io</code>仓库根目录执行<code>echo &quot;www.tizzybec.com&quot; &gt; CNAME</code>，提交到github</p>
 
 <p>现在访问<a href="http://www.tizzybec.com/">tizzybec</a>就是最终的个人博客站点了。</p>
+
+<h2>其它</h2>
+
+<ul>
+<li>修改了coffee/less文件需要使用gulp重新构建前端文（<code>cd theme &amp;&amp; gulp &amp;&amp; cd .. &amp;&amp; ink build</code>）</li>
+<li>暂时不支持单个md的构建命令，后续如果支持比较好</li>
+</ul>
 </article>
                 <section class="author">
                     <div class="avatar" style="background-image: url(/images/tizzybec.jpg);"></div>

@@ -118,18 +118,22 @@ struct MetaDataCollector;
 
 <p>然后声明一个激活器来激活元信息收集器</p>
 
-<pre><code>class __declspec(dllexport) Activator {  
-public:  
-     static T _Intance;  
-     static  T GetInstance()  
-    {  
-        T a;  
-        return _Intance;//函数内必须使用成员变量_Instance才能激活模板类成员变量的初始化  
-    }  
-};  
+<pre><code>template &lt;class T&gt;
+class SingletonActivator {
+ public:
+  static T&amp; Activate() {
+    Magic(ins_);
+    static T a;
+    return a;
+  }
   
-template &lt;typename T&gt;  
-__declspec(dllexport) T Activator&lt;T&gt;::_Intance = Activator&lt;T&gt;::GetInstance(); 
+ private:
+  static void Magic(const T&amp; x) { (void)x; };
+  static T&amp; ins_;
+};
+
+template &lt;class T&gt;
+T&amp; SingletonActivator&lt;T&gt;::ins_ = SingletonActivator&lt;T&gt;::Activate();
 </code></pre>
 
 <p>最后定义一个进行类数据收集的宏，我们假设每个要注册的类都提供一个RegType函数进行信息收集</p>

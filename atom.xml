@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom">
   <title>生活∙编码-日记</title>
   <id>http://www.tizzybec.com/</id>
-  <updated>2015-10-05T10:19:45+08:00</updated>
+  <updated>2015-10-05T10:35:27+08:00</updated>
   <subtitle>keep it simple and stupid.</subtitle>
   <link href="http://www.tizzybec.com/"></link>
   <author>
     <name>生活∙编码-日记</name>
   </author>
+  <entry>
+    <title>C++动态初始化（Dynamic Initializer）</title>
+    <updated>2015-10-04T21:43:00+08:00</updated>
+    <id>tag:,2015-10-04:/www.tizzybec.com/post/2015/10/04/cpp-dynamic-initializer.html</id>
+    <content type="html"> &#xA;&#xA;之前看公司有人收集类元信息用的方法很巧妙，所以早就想写一篇关于动态初始化的博客，一则是想分享，二则是作为个人摘记。&#xA;&#xA;</content>
+    <link href="http:/www.tizzybec.com/post/2015/10/04/cpp-dynamic-initializer.html"></link>
+    <author>
+      <name>tizzybec</name>
+    </author>
+  </entry>
   <entry>
     <title>使用InkPaper搭建个人博客</title>
     <updated>2015-10-04T11:33:00+08:00</updated>

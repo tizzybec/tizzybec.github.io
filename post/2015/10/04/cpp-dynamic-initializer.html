@@ -165,36 +165,20 @@ REGCLASS(C);
 
 <p>通过调试，我们顺利在GetInstance函数内得到断点，调用堆栈中显示了Dynamic initializtion字样</p>
 
-<pre><code>&gt;    MyMain.exe!`dynamic initializer for 'Activator&lt;MetaDataCollector&lt;C&gt; &gt;::_Intance''()  行 28 + 0x28 字节 C++  
+<pre><code>&gt;    MyMain.exe!`dynamic initializer for 'Activator&lt;MetaDataCollector&lt;C&gt; &gt;::ins_''()  行 28 + 0x28 字节 C++  
 </code></pre>
 
 <p>同时查看obj的dump输出在..CRT$XCU组内看到了需要动态初始化的变量</p>
 
 <pre><code>Offset    Type              Applied To         Index     Name  
 --------  ----------------  -----------------  --------  ------  
-00000000  DIR32                      00000000        47  ??__E?_Intance@?$Activator@U?$MetaDataCollector@VC@@@@@@2U?$MetaDataCollector@VC@@@@A@@YAXXZ (void __cdecl `dynamic initializer for 'public: static struct MetaDataCollector&lt;class C&gt; Activator&lt;struct MetaDataCollector&lt;class C&gt; &gt;::_Intance''(void))  
+00000000  DIR32                      00000000        47  ??__E?ins_@?$Activator@U?$MetaDataCollector@VC@@@@@@2U?$MetaDataCollector@VC@@@@A@@YAXXZ (void __cdecl `dynamic initializer for 'public: static struct MetaDataCollector&lt;class C&gt; Activator&lt;struct MetaDataCollector&lt;class C&gt; &gt;::ins_''(void))  
 </code></pre>
 
-<p>可以看到 <strong>_Intance</strong> 进行了动态初始化，通过定义宏可以看到这种实现还是比较优雅的，元信息类的初始化放在了单例类中,但是需要注意的初始化_Instance的过程中调用的GetInstance函数必须使用_Instance静态成员变量，否则模板类是无法激活的。</p>
+<p>可以看到 <strong>ins_</strong> 进行了动态初始化，通过定义宏可以看到这种实现还是比较优雅的，元信息类的初始化放在了单例类中,但是需要注意的初始化ins_的过程中调用的Activator函数必须使用ins_静态成员变量，否则模板类是无法触发Activate方法来实例化对象实例。</p>
 
 <p>综合以上实现,我们用到了不完整类型定义元信息收集器，通过宏来定义具体的元信息收集器进行模板的激活，模板激活的过程中发现有静态成员变量需要初始化，
-则首先调用GetInstance函数,如果GetInstance函数内没有任何影响静态变量值得代码，则初始化还是无法激活，所以也有另外一种写法，原理是一样的。</p>
-
-<pre><code>class __declspec(dllexport) Activator {  
-public:  
-     static T _Intance;  
-    static void Use(T a){};  
-     static  T GetInstance()  
-    {  
-        Use(_Instance);  
-        T a;  
-        return a;  
-    }  
-};  
-  
-template &lt;typename T&gt;  
-__declspec(dllexport) T Activator&lt;T&gt;::_Intance = Activator&lt;T&gt;::GetInstance();  
-</code></pre>
+则首先调用Activator函数,如果Activator函数内没有任何影响静态变量值得代码，则初始化还是无法激活。</p>
 
 <p>原因解释在c++标准中</p>
 

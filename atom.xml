@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom">
   <title>tizzybec@weibo</title>
   <id>http://www.tizzybec.com/</id>
-  <updated>2016-01-23T23:18:36+08:00</updated>
+  <updated>2016-03-20T23:40:46+08:00</updated>
   <subtitle>但行好事，莫问前程.</subtitle>
   <link href="http://www.tizzybec.com/"></link>
   <author>
     <name>tizzybec@weibo</name>
   </author>
+  <entry>
+    <title>面向c++程序员的scala教程</title>
+    <updated>2016-03-20T22:49:00+08:00</updated>
+    <id>tag:,2016-03-20:/www.tizzybec.com/post/2016/03/20/scala-tutorial-for-cpp-programmer.html</id>
+    <content type="html">&#xA;&#xA;最近在研究finagle，打算先从scala语言开始学习。本文不能作为scala的入门教程，内容也不尽完善和准确，只是作为个人学习笔记之用。&#xA;&#xA;</content>
+    <link href="http:/www.tizzybec.com/post/2016/03/20/scala-tutorial-for-cpp-programmer.html"></link>
+    <author>
+      <name>tizzybec</name>
+    </author>
+  </entry>
   <entry>
     <title>C++动态初始化（Dynamic Initializer）</title>
     <updated>2015-10-04T21:43:00+08:00</updated>

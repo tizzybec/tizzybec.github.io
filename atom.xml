@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom">
   <title>tizzybec@weibo</title>
   <id>http://www.tizzybec.com/</id>
-  <updated>2016-03-20T23:49:43+08:00</updated>
+  <updated>2016-03-30T22:53:23+08:00</updated>
   <subtitle>但行好事，莫问前程.</subtitle>
   <link href="http://www.tizzybec.com/"></link>
   <author>
     <name>tizzybec@weibo</name>
   </author>
+  <entry>
+    <title>关于 xxx-native-desktop 的思考</title>
+    <updated>2016-03-29T00:37:00+08:00</updated>
+    <id>tag:,2016-03-29:/www.tizzybec.com/post/2016/03/29/xxx-native-desktop.html</id>
+    <content type="html">&#xA;&#xA;最近在思考如何基于web开发方式做一个本地应用开发框架，兼具性能和开发体验。首先毙掉hybird app的方式，比如phonegap、titanium和electron这种方案，webview做的事情太多，很多环节不可控，同时无法和本地控件进行混合使用。&#xA;&#xA;</content>
+    <link href="http:/www.tizzybec.com/post/2016/03/29/xxx-native-desktop.html"></link>
+    <author>
+      <name>tizzybec</name>
+    </author>
+  </entry>
   <entry>
     <title>面向c++程序员的scala教程</title>
     <updated>2016-03-20T22:49:00+08:00</updated>

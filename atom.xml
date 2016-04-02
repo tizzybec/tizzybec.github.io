@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom">
   <title>tizzybec@weibo</title>
   <id>http://www.tizzybec.com/</id>
-  <updated>2016-03-31T20:57:55+08:00</updated>
+  <updated>2016-04-02T13:17:18+08:00</updated>
   <subtitle>但行好事，莫问前程.</subtitle>
   <link href="http://www.tizzybec.com/"></link>
   <author>
     <name>tizzybec@weibo</name>
   </author>
+  <entry>
+    <title>从cplusplus.com学习c++11的新特性</title>
+    <updated>2016-04-02T11:05:00+08:00</updated>
+    <id>tag:,2016-04-02:/www.tizzybec.com/post/2016/04/02/whats-new-in-cxx11-from-cppplusplus-dot-com.html</id>
+    <content type="html">&#xA;&#xA;看过基本C++11新特性的书，维基百科条目也读了数遍，平实是重度boost用户，偶尔从cplusplus.org查询c++标准库的参考，清明假期在家等快递的时间把cplusplus.com的内容通读了一遍。&#xA;&#xA;</content>
+    <link href="http:/www.tizzybec.com/post/2016/04/02/whats-new-in-cxx11-from-cppplusplus-dot-com.html"></link>
+    <author>
+      <name>tizzybec</name>
+    </author>
+  </entry>
   <entry>
     <title>关于 xxx-native-desktop 的思考</title>
     <updated>2016-03-29T00:37:00+08:00</updated>

@@ -92,7 +92,7 @@ bridge层完成js逻辑到本地逻辑的映射，主要是数据变化和事件
 
 <li><p>模型这块由vm完成数据的监视和本地数据的状态的同步。</p></li>
 
-<li><p>桥接这块比较偏向于使用servo，因为足够安全，而且同样有cef的绑定，后续也可以作为内嵌的浏览器使用，servo和v8的性能和内存占用还有待进一步测试，等数据这块的原型想清楚后会出相应的性能测试，看看在我们需要的典型场景下那种选择会更好。</p></li>
+<li><p>桥接这块比较偏向于使用v8，性能优先。</p></li>
 </ul>
 
 <pre><code class="language-html">&lt;ListView class=&quot;demo-list-view&quot;&gt;
@@ -124,7 +124,7 @@ bridge层完成js逻辑到本地逻辑的映射，主要是数据变化和事件
                     
                     <section class="nav prev more">
                         <div class="head">上篇文章</div>
-                        <a class="link" href="/post/2016/04/02/whats-new-in-cxx11-from-cppplusplus-dot-com.html">从cplusplus.com学习c&#43;&#43;11的新特性</a>
+                        <a class="link" href="/post/2016/04/05/rethink-vue-desktop.html">对vue-desktop的进一步思考</a>
                     </section>
                     
                     

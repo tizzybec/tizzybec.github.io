@@ -411,7 +411,7 @@ fAndThenG (&quot;x&quot;)  //return g(f(x))
 <p>如果拿C++改写，可能是这样的（徒手码的）</p>
 
 <pre><code class="language-scala">template &lt;typename A&gt;
-A foo(std::list&lt;A&gt; (const *f)(A), const A &amp;i) {
+std::list&lt;A&gt; foo(std::list&lt;A&gt; (const *f)(A), const A &amp;i) {
     return f(i);
 }
 </code></pre>

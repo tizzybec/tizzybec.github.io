@@ -1,18 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom">
   <title>tizzybec@weibo</title>
   <id>http://www.tizzybec.com/</id>
-  <updated>2016-04-07T00:07:40+08:00</updated>
+  <updated>2016-05-06T23:20:50+08:00</updated>
   <subtitle>但行好事，莫问前程.</subtitle>
   <link href="http://www.tizzybec.com/"></link>
   <author>
     <name>tizzybec@weibo</name>
   </author>
   <entry>
+    <title>使用premake5进行项目生成</title>
+    <updated>2016-05-06T10:52:00+08:00</updated>
+    <id>tag:,2016-05-06:/www.tizzybec.com/post/2016/05/06/use-premake5-generate-projects.html</id>
+    <content type="html">&#xA;&#xA;最近在把之前写的YASS(Yet Another Simlation System)项目拆成三个部分，分别是tbcore、tbui和tbengine，YASS在win下使用vs2015（早期是2010）开发，构建系统是msbuild，这次拆分索性把项目生成这块好好做一下，开始考虑cmake，但看过文档后对cmake的dsl实在是望而生畏，所以只有使用经验没有编写经验，premake可以作为一个非常优秀的选择（我不少开源项目在用）。&#xA;&#xA;</content>
+    <link href="http:/www.tizzybec.com/post/2016/05/06/use-premake5-generate-projects.html"></link>
+    <author>
+      <name>tizzybec</name>
+    </author>
+  </entry>
+  <entry>
+    <title>响应式编程随想（ReactiveX）</title>
+    <updated>2016-04-17T18:52:00+08:00</updated>
+    <id>tag:,2016-04-17:/www.tizzybec.com/post/2016/04/17/thinking-reactive-programming.html</id>
+    <content type="html">&#xA;&#xA;从学习react到reactivex，响应式编程风格越来越流行。&#xA;&#xA;</content>
+    <link href="http:/www.tizzybec.com/post/2016/04/17/thinking-reactive-programming.html"></link>
+    <author>
+      <name>tizzybec</name>
+    </author>
+  </entry>
+  <entry>
     <title>对vue-desktop的进一步思考</title>
     <updated>2016-04-05T23:11:00+08:00</updated>
     <id>tag:,2016-04-05:/www.tizzybec.com/post/2016/04/05/rethink-vue-desktop.html</id>
     <content type="html">&#xA;    &#xA;上周的xxx-native-deskop的思考是一个非常初级的想法，最近又结合虚幻引擎界面设计和vczh的GacUI的思路进行了进一步思考。&#xA;&#xA;</content>
     <link href="http:/www.tizzybec.com/post/2016/04/05/rethink-vue-desktop.html"></link>
+    <author>
+      <name>tizzybec</name>
+    </author>
+  </entry>
+  <entry>
+    <title>从cplusplus.com学习c++11的新特性</title>
+    <updated>2016-04-02T11:05:00+08:00</updated>
+    <id>tag:,2016-04-02:/www.tizzybec.com/post/2016/04/02/whats-new-in-cxx11-from-cppplusplus-dot-com.html</id>
+    <content type="html">&#xA;&#xA;看过基本C++11新特性的书，维基百科条目也读了数遍，平实是boost重度用户，偶尔从cplusplus.org查询c++标准库的参考，清明假期在家等快递的时间把cplusplus.com的内容通读了一遍。&#xA;&#xA;</content>
+    <link href="http:/www.tizzybec.com/post/2016/04/02/whats-new-in-cxx11-from-cppplusplus-dot-com.html"></link>
     <author>
       <name>tizzybec</name>
     </author>

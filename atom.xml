@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom">
-  <title>tizzybec@weibo</title>
+  <title>tizzybec的博客</title>
   <id>http://www.tizzybec.com/</id>
-  <updated>2016-05-06T23:20:50+08:00</updated>
-  <subtitle>但行好事，莫问前程.</subtitle>
+  <updated>2016-05-06T23:23:27+08:00</updated>
+  <subtitle>但行好事，莫问前程</subtitle>
   <link href="http://www.tizzybec.com/"></link>
   <author>
-    <name>tizzybec@weibo</name>
+    <name>tizzybec的博客</name>
   </author>
   <entry>
     <title>使用premake5进行项目生成</title>

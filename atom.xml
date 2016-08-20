@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom">
   <title>tizzybec的博客</title>
   <id>http://www.tizzybec.com/</id>
-  <updated>2016-08-20T16:39:47+08:00</updated>
+  <updated>2016-08-20T16:55:15+08:00</updated>
   <subtitle>但行好事，莫问前程</subtitle>
   <link href="http://www.tizzybec.com/"></link>
   <author>
     <name>tizzybec的博客</name>
   </author>
   <entry>
-    <title>对vue-desktop的进一步思考</title>
+    <title>使用mongoose构建web服务器</title>
     <updated>2016-08-20T12:00:00+08:00</updated>
     <id>tag:,2016-08-20:/www.tizzybec.com/post/2016/08/20/use-mongoose-to-build-web-server.html</id>
     <content type="html">&#xA;&#xA;最近在使用[mongoose](https://github.com/cesanta/mongoose)包装RESTful服务接口，内部系统是公司内部服务框架，通信协议都是二进制，每个服务的输入和输出都能自动绑定到JSON格式，和外部系统交互统一通过RESTful接口进行，在使用mongoose进行服务端和客户端基础库的包装时也发现这个库的一些不足。&#xA;&#xA;</content>

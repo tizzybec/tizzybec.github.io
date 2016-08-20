@@ -196,18 +196,18 @@ Put more simply, chunking is how you transfer a block of data, while multipart i
 <pre><code>Content-Type: multipart/...; boundary=JNhbAsdujgbjhasd\r\n
 </code></pre>
 
-<p>multiparts数据使用头部指定boundary进行数据分段，没段的开始以&rdquo;&ndash;${boundary}\r\n&rdquo;开始,跟随一行数据组成头&rdquo;Content-Compisition:&hellip;\r\n\r\n&rdquo;,然后是数据内容，理论上内容不能包含&rdquo;&ndash;${boundary}&ldquo;，以避免出现错误的数据边界识别，最后一&rdquo;&ndash;${boundary}&ndash;\r\n&rdquo;结束多段数据传输。</p>
+<p>multiparts数据使用头部指定boundary进行数据分段，没段的开始以&rdquo;&ndash;${boundary}\r\n&rdquo;开始,跟随一行数据处置头&rdquo;Content-Disposition:&hellip;\r\n\r\n&rdquo;,然后是数据内容，理论上内容不能包含&rdquo;&ndash;${boundary}&ldquo;，以避免出现错误的数据边界识别，最后一&rdquo;&ndash;${boundary}&ndash;\r\n&rdquo;结束多段数据传输。</p>
 
 <p>一个多段数据传输的例子：</p>
 
 <pre><code>Content-Type: multipart/form-data; boundary=AsdsdgsdgASAFS\r\n
 \r\n
 --AsdsdgsdgASAFS\r\n
-Content-Compisition: name=a; filename=a.txt\r\n
+Content-Disposition: name=a; filename=a.txt\r\n
 \r\n
 [content of a.txt]
 \r\n--AsdsdgsdgASAFS\r\n
-Content-Compisition: name=b; filename=b.txt\r\n
+Content-Disposition: name=b; filename=b.txt\r\n
 \r\n
 [content of b.txt]
 \r\n--AsdsdgsdgASAFS--\r\n

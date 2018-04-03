@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=1">
+<meta name="renderer" content="webkit">
+<meta name="google" value="notranslate">
+<meta name="robots" content="index,follow">
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="tizzybec的博客">
+<meta name="twitter:description" content="但行好事，莫问前程">
+<meta name="twitter:image:src" content="http://www.tizzybec.com/images/tizzybec.jpg">
+
+<meta property="og:url" content="http://www.tizzybec.com">
+<meta property="og:title" content="tizzybec的博客">
+<meta property="og:description" content="但行好事，莫问前程">
+<meta property="og:site_name" content="tizzybec的博客">
+<meta property="og:image" content="http://www.tizzybec.com/images/tizzybec.jpg">
+<meta property="og:type" content="website">
+<meta name="robots" content="noodp">
+
+<meta itemprop="name" content="tizzybec的博客">
+<meta itemprop="description" content="但行好事，莫问前程">
+<meta itemprop="image" content="http://www.tizzybec.com/images/tizzybec.jpg">
+
+<link rel="canonical" href="http://www.tizzybec.com">
+
+<link rel="shortcut icon" href="/favicon.png">
+<link rel="apple-itouch-icon" href="/favicon.png">
+<link rel="stylesheet" href="/bundle/index.css">
+<script type="text/javascript">
+    var timeSinceLang = {
+        year: '年前',
+        month: '个月前',
+        day: '天前',
+        hour: '小时前',
+        minute: '分钟前',
+        second: '秒前'
+    };
+    var root = '';
+</script>
+
+
+        <meta name="keywords" content="Vue,Vue-desktop,Skia,Vuejs,Qt,GacUI,Unreal Engine,">
+        <meta name="description" content="对vue-desktop的进一步思考">
+        <meta name="author" content="tizzybec">
+        <title>对vue-desktop的进一步思考</title>
+    </head>
+    <body>
+        <article class="container">
+            <header class="header-wrap">
+  <a class="index" href="/">
+    <img class="logo" src="/images/tizzybec.jpg" />
+    tizzybec的博客
+  </a>
+  <ul class="menu">
+      <li class="menu-item"><a href="/archive.html">归档</a></li>
+      <li class="menu-item"><a href="/tag.html">标签</a></li>
+      <li class="menu-item"><a href="/atom.xml">订阅</a></li>
+  </ul>
+</header>
+
+            <article class="main article">
+                <h1 class="title">对vue-desktop的进一步思考</h1>
+                <section class="info">
+                    <span class="avatar" style="background-image: url(/images/tizzybec.jpg);"></span>
+                    <a class="name" href="/about.me.html">tizzybec</a>
+                    
+                    <span class="date" data-time="1459869060"><span class="from"></span></span>
+                    
+                    <span class="tags"><a class="tag" href="/tag/Vue/index.html">Vue</a><a class="tag" href="/tag/Vue-desktop/index.html">Vue-desktop</a><a class="tag" href="/tag/Skia/index.html">Skia</a><a class="tag" href="/tag/Vuejs/index.html">Vuejs</a><a class="tag" href="/tag/Qt/index.html">Qt</a><a class="tag" href="/tag/GacUI/index.html">GacUI</a><a class="tag" href="/tag/Unreal%20Engine/index.html">Unreal Engine</a></span>
+                </section>
+                <article class="content"><p>上周的xxx-native-deskop的思考是一个非常初级的想法，最近又结合虚幻引擎界面设计和vczh的GacUI的思路进行了进一步思考。</p>
+
+<p>UI这块使用Qt最为后端的想法写完上篇之后就被我彻底摒弃了</p>
+
+<ol>
+<li>和Qt窗口很难作数据映射，和MVVM的方式适配起来比较麻烦</li>
+<li>如果这样做了可能就是另一个Qt Quick，但是quick这个东西实在是无感</li>
+<li>窗口系统不可控，这也是虚幻、chromium、火狐各家实现自己的窗口系统的原因</li>
+</ol>
+
+<p>后来又想用vczh的GacUI，去github速览了一下源码，GacUI的设计和特性无疑是优秀的，能满足MVVM的方式，但是还是过于复杂，且还有一些坑没填完（TODO），最终还是舍弃了。然后我在想，既然了解Qt和虚幻的窗口设计，又熟悉web这一套界面实现方式，为什么不自己造个轮子呢，如此一来，上述所有问题应该能徒手解决吧。</p>
+
+<p>但这个轮子也不是凭空造的（全部凭空造的那是轮子哥），还是必须借用一些三方库来实现这些，初步选型：</p>
+
+<ol>
+<li>脚本使用javascript，选择v8自然是没什么可说的了</li>
+<li>后端2D绘制选用skia（chromium和火狐在使用，有部分使用经验，绘制性能和效果都不错）</li>
+<li>前端vm库使用vuejs</li>
+<li>dom解析使用pugixml</li>
+<li>窗口系统和前端绑定自己实现，窗口体系参考html5标准，样式使用css-layout库</li>
+</ol>
+
+<p>这样我们就有了一个最小的webkit实现，同时拥有扩展本地控件的能力（比如地图这类复杂控件）。</p>
+
+<p><a href="http://novajs.com/index.html">nova.js</a>给出的一个web component的例子</p>
+
+<p>控件代码</p>
+
+<pre><code class="language-html">&lt;!-- 注册自定义元素&lt;markdown-editor&gt; --&gt;
+&lt;template is=&quot;dom-module&quot;&gt;
+    &lt;style&gt;
+        :host {display:block;padding:15px 20px;border:1px solid rgba(16,16,16,0.1);background:white;}
+        textarea { width:100%; height:100px; resize:none;padding:5px;}
+    &lt;/style&gt;
+    &lt;template&gt;
+        &lt;h3&gt;Markdown Editor&lt;/h3&gt;
+        &lt;textarea value=&quot;{{content::input}}&quot;&gt;&lt;/textarea&gt;
+        &lt;p&gt;&lt;/p&gt;
+    &lt;/template&gt;
+    &lt;script require-src=&quot;components/nova-markdown/marked&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+        Nova({
+            is: 'markdown-editor',
+            props: {
+                content: {
+                    type: String,
+                    value: 'Hello Nova! '
+                }
+            },
+            createdHandler: function() {
+                this.on('_contentChanged', this.contentObserver);
+                this.render();
+            },
+            contentObserver: function(ev, oldVal, newVal) {
+                this.render();
+            },
+            render: function() {
+                this.querySelector('p').innerHTML = marked(this.content);
+            }
+        });
+    &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+
+<p>使用Markdown控件</p>
+
+<pre><code class="language-html">&lt;markdown-editor content=&quot;# Hello \n Type some markdown here.&quot;&gt;&lt;/markdown-editor&gt;
+</code></pre>
+
+<p>vue-loader的一个例子</p>
+
+<p><img src="data:image/gif;base64,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" data-src="/images/vue-component-with-pre-processors.png" alt="vue component template" /></p>
+
+<p>其实Qt Designer的思路和上面有点类似，.ui文件有点像web component的声明，在编译期通过uic编译器编译为本地代码，在ui开发体验和性能上都照顾到了，但是有几个问题</p>
+
+<ol>
+<li>忽略了数据的绑定过程，一旦生成界面文件(ui_xx.h，相当于view部分)，剩下的数据逻辑和显示逻辑几乎是混在在一块的，整个数据流在开发中没有很好的体现出来，当然Qt也提供Model模型，用于和View型的控件进行数据绑定，解耦显示和模型，实际用起来还是糅杂得比较紧密</li>
+<li>控件的复用度是通过提升来实现的，也就是首先在Designer中有对应的控件基类，然后提升到某个用户自定义控件类，所见即所得的ui设计方式有助于减少上手的简易性，却无法降低程序逻辑组织的复杂度</li>
+<li>显示样式没有和控件本身没有进行分离，导致部分样式设置放置在.ui文件中，部分放置在控件代码内（.ui文件的样式配置最终也是以代码的方式体现），显示配置没有很好地分离出来，导致修改主题要么重写style，要么使用支持有限的stylesheet，两者结合起来使用往往会出现和预期不一致的效果（这个看经验了）</li>
+</ol>
+
+<p>前面还没有提及对数据变化的管理，从目前前端去世来看，单一状态组件确实是比较好的思路，对于撤销重做这样的特性简直信手拈来 ，对于组件来说，有状态传入和传出，并不涉及对状态的直接修改，对于传出状态的回写需要在于状态管理方处理（store）。这点我后端的框架是能够非常好地支持，基本上前端的一些解决思路在现有的后端框架中都有所体现，所以前端这么玩也没有问题，部分对性能要求极高的部分可能还会放在后端来实现。</p>
+
+<p>前端主要负责显示逻辑，数据逻辑还是来自后端，前端可以通过js绑定的获取数据，后端会建立数据对象监视器，对新数据进行检测，初始化时前段根据数据类型编写数据模板填充代码，进行首次渲染，后端出现数据变化，会触发前段数据变化通知回调，前段再根据变化编写对象的显示变化代码。</p>
+
+<p>使用web作为前段主要是为了调试和编写方便，应用发布的理想方式是在正式发布前将前段代码转换为c++代码（根据js的ast树进行代码转换），这部分工作依赖性能测试的结果，如果性能在可接受的范围内，可以忽略代码转换，如果需要将性能提升到机制，那么在代码转换这块必须作出投入来减少开发便利带来的性能损失。</p>
+</article>
+                <section class="author">
+                    <div class="avatar" style="background-image: url(/images/tizzybec.jpg);"></div>
+                    <a class="name" href="/about.me.html">tizzybec</a>
+                    <div class="intro">c&#43;&#43;程序员，scala/luajit学习中...</div>
+                </section>
+                <section class="recommend">
+                    
+                    <section class="nav prev more">
+                        <div class="head">◀ 上一篇</div>
+                        <a class="link" href="/use-premake5-generate-projects.html">使用premake5进行项目生成</a>
+                    </section>
+                    
+                    
+                    <section class="nav next more">
+                        <div class="head">下一篇 ▶</div>
+                        <a class="link" href="/xxx-native-desktop.html">关于 xxx-native-desktop 的思考</a>
+                    </section>
+                    
+                </section>
+                
+
+            </article>
+        </article>
+        <footer class="footer">
+    <span class="copyright">
+        tizzybec的博客 ©
+        <script type="text/javascript">
+            document.write(new Date().getFullYear());
+        </script>
+    </span>
+    <span class="publish">Powered by <a href="http://www.chole.io/" target="_blank">Ink</a></span>
+</footer>
+
+        <script src="/bundle/index.js"></script>
+        <div id="go_top" style="position:fixed; LEFT:85%; bottom:50px">
+            <svg width="30" height="30" viewBox="0 0 878 1024">
+                <path fill="#8a8a8a" d="M733.714 511.429c0-9.714-3.429-18.857-10.286-25.714l-258.857-258.857c-6.857-6.857-16-10.286-25.714-10.286s-18.857 3.429-25.714 10.286l-258.857 258.857c-6.857 6.857-10.286 16-10.286 25.714s3.429 18.857 10.286 25.714l52 52c6.857 6.857 16 10.286 25.714 10.286s18.857-3.429 25.714-10.286l108-108v286.857c0 20 16.571 36.571 36.571 36.571h73.143c20 0 36.571-16.571 36.571-36.571v-286.857l108 108c6.857 6.857 16 10.857 25.714 10.857s18.857-4 25.714-10.857l52-52c6.857-6.857 10.286-16 10.286-25.714zM877.714 512c0 242.286-196.571 438.857-438.857 438.857s-438.857-196.571-438.857-438.857 196.571-438.857 438.857-438.857 438.857 196.571 438.857 438.857z"></path>
+            </svg>
+        </div>
+    </body>
+</html>
